@@ -56,8 +56,7 @@ $ npm install
 $ bower install
 ```
 
-And build the project
-
+And build the project (WIP)
 ```
 $ grunt build
 ```
@@ -69,7 +68,7 @@ To run the extension on Google Chrome:
 ```
 Go to chrome://extensions
 Clic on "Load unpacked extension..."
-Select the directory of this project
+Select the directory of the project
 ```
 
 ## Testing
