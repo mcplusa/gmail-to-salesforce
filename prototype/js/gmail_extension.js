@@ -19,7 +19,7 @@ app.controller('SFModalCtrl', ['$scope', '$filter', 'ngDialog', function($scope,
   $scope.confirmingCases = false;
   $scope.addingCases = false;
 
-  var extensionKey = 'ehhnajnaccjlbiphipjglncflaedjnok';
+  var extensionKey = localStorage.gmail_to_salesforce_key;
 
   var formatEmailContent = function(email){
     var html = document.createElement('div');

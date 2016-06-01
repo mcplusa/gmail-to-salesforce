@@ -29,6 +29,9 @@ inject.JS('bower_components/jquery/dist/jquery.min.js');
 inject.JS("bower_components/angular/angular.min.js");
 inject.JS('bower_components/gmailjs/index.js');
 
+
+localStorage.setItem('gmail_to_salesforce_key',chrome.runtime.id);
+
 window.addEventListener("load", function() {
   inject.HTML('modal.html');
   inject.JS('bower_components/ngDialog/js/ngDialog.min.js');
