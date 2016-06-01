@@ -3,6 +3,12 @@ proxy/
 forcejs/
 forceng/
 
+# NPM
+node_modules/
+
+# Bower
+bower_components/
+
 # Chrome Extension
 *.crx
 *.pem
