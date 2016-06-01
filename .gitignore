@@ -1,5 +1,7 @@
 test/
 proxy/
+forcejs/
+forceng/
 
 # Chrome Extension
 *.crx
