@@ -15,6 +15,8 @@ var app = angular.module('SalesForceOptions',['forceng'])
         $scope.productionSelected = result.tokens.production;
         $scope.authenticate(result.tokens);
         $scope.updateUserData(result.tokens);
+      } else {
+        $scope.loading = false;
       }
       $scope.$apply();
     });
