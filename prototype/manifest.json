@@ -1,0 +1,44 @@
+{
+  "name": "Gmail to Salesforce",
+  "manifest_version": 2,
+  "version": "0.9.0",
+  "description": "Gmail to Salesforce Chrome extension.",
+  "icons": {
+
+  },
+  "background":{
+    "page": "background.html"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "https://mail.google.com/*" ],
+      "js": [ "js/content_script.js" ],
+      "run_at": "document_end",
+      "all_frames": false
+    }],
+  "externally_connectable": {
+    "matches": [ "http://localhost:8080/*", "https://mail.google.com/*" ]
+  },
+  "icons": {
+    "16": "img/icon16.png",
+    "64": "img/icon64.png",
+    "128": "img/icon128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo1xZiha9nTGH3QuBJVfxSE9CT+xGaGzlVTWDq6tAHBZZ/D2pnLnVaxM/WD/GjEPNfF3ijpI3FQbxLLuH7UDYoL7YjBRAq8tb01x2Vd3VSjtEsdHHOa75qSCqZ0J9BaHqSBQe6lVkaG0Db8qYCiKgjeHKO9aL72DYyEZ7luffWcDEn0v6o8SSz9xyegvf47FaatgyRbb51MGqUYUo3t5geGaU0FDU1XPjGDsun4+Tqa63eVSK27WHVuNR01ZIbGileeNBefOnu2QSzsKzlUQvfXdhroqGT/tearGHb1r7RoX2pH7Oh9fuoCSNrJ9RvZuB7czt87yHTI+n3NXRnMk0/QIDAQAB",
+  "permissions" : [
+    "storage",
+    "tabs",
+    "activeTab",
+    "https://*.salesforce.com/"
+  ],
+  "web_accessible_resources": [
+    "bower_components/*",
+    "modal.html",
+    "js/*",
+    "css/*.css",
+    "img/*"
+  ]
+}

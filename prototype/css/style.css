@@ -1,0 +1,235 @@
+.options {
+  padding: 20px;
+}
+
+.options .profile {
+  padding-bottom: 10px;
+}
+
+.options .profile img {
+  width: 100%;
+}
+
+.modal-theme {
+  padding: 70px 0px !important;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.modal-theme .ngdialog-content {
+  background: white !important;
+  width: 80% !important;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.row {
+  width: 100%;
+}
+
+.SFModal {
+  height:100%;
+}
+
+.modal-body {
+  height: 100%
+}
+
+.btn-SFModal {
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-SFModal:hover,
+.btn-SFModal:focus,
+.btn-SFModal.focus,
+.btn-SFModal:active,
+.btn-SFModal.active,
+.open > .dropdown-toggle.btn-SFModal {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.btn-SFModal:active,
+.btn-SFModal.active,
+.open > .dropdown-toggle.btn-SFModal {
+  background-image: none;
+}
+.btn-SFModal.disabled,
+.btn-SFModal[disabled],
+fieldset[disabled] .btn-SFModal,
+.btn-SFModal.disabled:hover,
+.btn-SFModal[disabled]:hover,
+fieldset[disabled] .btn-SFModal:hover,
+.btn-SFModal.disabled:focus,
+.btn-SFModal[disabled]:focus,
+fieldset[disabled] .btn-SFModal:focus,
+.btn-SFModal.disabled.focus,
+.btn-SFModal[disabled].focus,
+fieldset[disabled] .btn-SFModal.focus,
+.btn-SFModal.disabled:active,
+.btn-SFModal[disabled]:active,
+fieldset[disabled] .btn-SFModal:active,
+.btn-SFModal.disabled.active,
+.btn-SFModal[disabled].active,
+fieldset[disabled] .btn-SFModal.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-SFModal .badge {
+  color: #5bc0de;
+  background-color: #fff;
+}
+
+.icon-gmailToSfdc{
+    background-image: url("../img/icon24.png");
+    background-position: center center;
+    height: 22px;
+    width: 22px;
+}
+
+.panel-header-white {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #ffffff !important;
+}
+
+.btn-login {
+  color: #FF8F29;
+  background-color: #fff;
+  border-color: #FF8F29;
+}
+.btn-logout {
+  color: #FF2929;
+  background-color: #fff;
+  border-color: #FF2929;
+  margin-top: 10px;
+}
+.btn-close {
+  color: #1A9AD6;
+  background-color: #fff;
+  border-color: #1A9AD6;
+  width: 150px;
+}
+
+.panel-footer-login {
+  background-color: #fff !important;
+  border-top: #fff !important;
+  padding-top: 15%;
+}
+
+.panel-login {
+  border-color: #fff !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.add-separation {
+  padding-top: 5%;
+}
+
+.add-separation-big {
+  padding-top: 15%;
+}
+
+.add-separation-small {
+  padding-top: 2%;
+}
+
+.btn-square {
+  padding: 8px 8px !important;
+}
+
+.btn-unfocusable:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.btn-unfocusable:active {
+  background-color: #fff;
+}
+
+.btn-unfocusable:hover {
+  background-color: #fff;
+}
+
+.glyphicon-none:before {
+    content: "\2122";
+    color: transparent !important;
+}
+
+.label-image {
+  padding-top: 35px;
+  text-align: left;
+  padding-left: 0px;
+}
+
+.slds-icon__container, .slds-icon_container {
+    display: inline-block;
+    border-radius: .25rem;
+    margin-top: 4px;
+}
+
+.logo-mcplusa {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url("../img/mcplusa-small.png");
+  width: 100px; /*or your image's width*/
+  height: 23px; /*or your image's height*/
+  padding-left: 100px; /* Equal to width of new image */
+  margin-top: 7px;
+}
+
+.logo-gmail-to-sfdc {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url("../img/icon128.png");
+  width: 190px; /*or your image's width*/
+  height: 190px; /*or your image's height*/
+  padding-left: 190px; /* Equal to width of new image */
+}
+
+*, :after, :before {
+  box-sizing: initial;
+}
+
+body {
+  box-sizing: initial;
+  font-size: initial;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  background: #fff;
+}
+
+.ngdialog.ngdialog-theme-default.small-dialog .ngdialog-content {
+  width:30%;
+  background: #fff;
+}
+
+.pagination-no-margin {
+  margin: 0 0;
+}
+
+.pagination-left-align {
+  display: block;
+}
+
+.slds-table-row-sm > td{
+  line-height: 0em;
+}
+
+.ngdialog.ngdialog-theme-default {
+  padding-top: 5%;
+}

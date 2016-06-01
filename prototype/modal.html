@@ -1,0 +1,202 @@
+<div ng-app="SalesForceApp" ng-controller="GmailCtrl" ng-csp>
+  <script type="text/ng-template" id="SFModal">
+    <div class="SFModal" ng-init="getAllCases()" ng-dialog-class="ngdialog-theme-default slds-modal slds-fade-in-open">
+      <!-- Header -->
+      <div class="modal-title">
+        <div class="row">
+          <div class="col-xs-2 col-md-2">
+            <img class="logo-mcplusa"/>
+          </div>
+          <div class="col-xs-10 col-md-10">
+            <div class="input-group">
+              <form ng-submit="getCasesByQuery(searchBox)">
+                <input type="text" class="form-control" ng-model="searchBox" placeholder="Search for Cases" ng-disabled="loading || confirmingCases || addingCases">
+              </form>
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="getCasesByQuery(searchBox)" type="submit" ng-disabled="loading || confirmingCases || addingCases">
+                  <i ng-hide="loading" class="fa fa-search"></i>
+                  <i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row add-separation-small" ng-hide="loading || confirmingCases || addingCases">
+          <div class="col-xs-12 col-md-12">
+            <h5>
+              <small>
+                <a href="" ng-click="getAssignedToMe()">
+                  Assigned to Me
+                </a>
+                |
+                <a href="" ng-click="getAssignedToAll()">
+                  Assigned to All
+                </a>
+              </small>
+            </h5>
+          </div>
+        </div>
+        <div class="row add-separation-small" ng-show="confirmingCases">
+          <div class="col-xs-12 col-md-12">
+            <h1>Salesforce Objects that will be updated:</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content (Showing Cases) -->
+      <div class="results modal-body">
+        <table class="slds-table slds-table--bordered">
+          <thead>
+            <tr class="slds-text-heading--label">
+              <th class=slds-cell-shrink>
+                <label class="slds-checkbox">
+                  <span class="slds-assistive-text"></span>
+                </label>
+              </th>
+              <th class="slds-is-sortable" scope="col" ng-click="sortResults('CaseNumber')">
+                <div class="slds-truncate">Object Id
+                  <button class="slds-button slds-button--icon-bare" ng-click="sortResults('CaseNumber')">
+                    <i class="fa fa-sort" aria-hidden="true" ng-show="sortColumn.indexOf('CaseNumber') < 0"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" ng-show="sortColumn === '-CaseNumber'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" ng-show="sortColumn === '+CaseNumber'"></i>
+                    <span class="slds-assistive-text">Sort</span>
+                  </button>
+                </div>
+              </th>
+              <th class="slds-is-sortable" scope="col" ng-click="sortResults('Subject')">
+                <div class="slds-truncate">Subject
+                  <button class="slds-button slds-button--icon-bare" ng-click="sortResults('Subject')">
+                    <i class="fa fa-sort" aria-hidden="true" ng-show="sortColumn.indexOf('Subject') < 0"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" ng-show="sortColumn === '-Subject'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" ng-show="sortColumn === '+Subject'"></i>
+                    <span class="slds-assistive-text">Sort</span>
+                  </button>
+                </div>
+              </th>
+              <th class="slds-is-sortable" scope="col" ng-click="sortResults('Priority')">
+                <div class="slds-truncate">Priority
+                  <button class="slds-button slds-button--icon-bare" ng-click="sortResults('Priority')">
+                    <i class="fa fa-sort" aria-hidden="true" ng-show="sortColumn.indexOf('Priority') < 0"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" ng-show="sortColumn === '-Priority'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" ng-show="sortColumn === '+Priority'"></i>
+                    <span class="slds-assistive-text">Sort</span>
+                  </button>
+                </div>
+              </th>
+              <th class="slds-is-sortable" scope="col" ng-click="sortResults('Status')">
+                <div class="slds-truncate">Status
+                  <button class="slds-button slds-button--icon-bare" ng-click="sortResults('Status')">
+                    <i class="fa fa-sort" aria-hidden="true" ng-show="sortColumn.indexOf('Status') < 0"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" ng-show="sortColumn === '-Status'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" ng-show="sortColumn === '+Status'"></i>
+                    <span class="slds-assistive-text">Sort</span>
+                  </button>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slds-text-body--small slds-table-row-sm"
+                ng-show="results.records"
+                ng-repeat="item in results.records
+                  | orderBy:sortColumn
+                  | startFrom:currentPage*pageSize
+                  | limitTo:pageSize">
+              <td class="slds-cell-shrink" data-label="Select Row" ng-hide="addingCases">
+                <label class="slds-checkbox">
+                  <input type="checkbox" name="options" ng-model="item.isSelected" />
+                  <span class="slds-checkbox--faux"></span>
+                  <span class="slds-assistive-text">Select Row</span>
+                </label>
+              </td>
+              <td class="slds-cell-shrink" ng-show="addingCases">
+                <i class="fa fa-circle-o-notch fa-spin" ng-show='item.loading'></i>
+                <i class="fa fa-check-circle-o" ng-show='!item.loading'></i>
+              </td>
+              <td class="slds-truncate" scope="row" data-label="Subject">{{item.CaseNumber}}</td>
+              <td class="slds-truncate" scope="row" data-label="Subject">{{item.Subject}}</td>
+              <td class="slds-truncate" scope="row" data-label="Subject">{{item.Priority}}</td>
+              <td class="slds-truncate" scope="row" data-label="Subject">{{item.Status}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Footer (Adding Cases) -->
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-xs-7 col-md-7">
+              <div ng-show="results.records">
+                <ul class="pagination pagination-sm pagination-no-margin pagination-left-align">
+                  <li class="disabled" ng-show="currentPage == 0"><a href="">BACK</a></li>
+                  <li ng-hide="currentPage == 0"><a href="" ng-click="currentPage = currentPage - 1">BACK</a></li>
+
+                  <!-- Show all pages
+                  <li ng-repeat="page in [] | range: (results.records.length/pageSize) + 1">
+                    <a ng-if="$index === currentPage" href=""><strong>{{$index + 1}}</strong></a>
+                    <a ng-if="$index !== currentPage" href="" ng-click="currentPage = $index">{{$index + 1}}</a>
+                  </li>
+                  -->
+
+                  <!-- Show current Page -->
+                  <li><a href="">{{currentPage + 1}}</a></li>
+
+                  <li class="disabled" ng-show="(currentPage + 1) * pageSize >= results.records.length"><a href="">NEXT</a></li>
+                  <li ng-hide="(currentPage + 1) * pageSize >= results.records.length"><a href="" ng-click="currentPage = currentPage + 1">NEXT</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xs-5 col-md-5" ng-hide="confirmingCases || addingCases">
+              <button type="button" class="btn btn-default" ng-click="createCaseFeed()">Create new Case</button>
+              <button type="button" class="btn btn-primary" ng-click="confirmCases()" ng-disabled="!casesChosen() || casesChosen().length === 0">Send to Salesforce</button>
+            </div>
+            <div class="col-xs-5 col-md-5" ng-show="confirmingCases">
+              <button type="button" class="btn btn-default" ng-click="undoConfirmCases()">Back</button>
+              <button type="button" class="btn btn-primary" ng-click="addCommentToCases()">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- Finishing dialog -->
+  <script type="text/ng-template" id="SFModalFinish">
+    <div class="SFModal" ng-dialog-class="ngdialog-theme-default slds-modal slds-fade-in-open">
+      <center>
+        <div class="row add-separation-big">
+            <img class="logo-gmail-to-sfdc"/>
+        </div>
+        <div class="row add-separation">
+          <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+            <h5>All objects have been succesfully updated!</h5>
+          </div>
+        </div>
+        <div class="row add-separation-big">
+          <div class="btn btn-close" ng-click="closeThisDialog('')">
+            Close
+          </div>
+        </div>
+
+        <div class="row add-separation-big">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <img class="logo-mcplusa"/>
+          </div>
+        </div>
+
+        <div class="row add-separation">
+          <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+            <div class="row">
+              <small>
+                <div class="col-xs-5 col-md-5"><a href="http://mcplusa.com">License</a></div>
+                <div class="col-xs-2 col-md-2">|</div>
+                <div class="col-xs-5 col-md-5"><a href="http://mcplusa.com">Support</a></div>
+              </small>
+            </div>
+          </div>
+        </div>
+    </center>
+
+    </div>
+  </script>
+</div>

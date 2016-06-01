@@ -1,0 +1,181 @@
+<html ng-app="SalesForceOptions" ng-csp>
+  <head>
+    <!-- build:[href] css/third-party/ -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/salesforce-lightning-design-system/assets/styles/salesforce-lightning-design-system.min.css" type="text/css">
+    <!-- /build -->
+      <!-- build:[href] css/ -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- /build -->
+  </head>
+  <body ng-controller="OptionsCtrl" ng-init="checkToken()">
+    <div class="panel panel-default panel-login">
+
+      <!-- Panel Content (Unauthorized) -->
+      <div class="panel-body" ng-show="!loggedUser">
+        <div>
+          <h4>
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+            Gmail to Salesforce Configuration
+          </h4>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <center>
+              <img src="img/user.png">
+            </center>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <div class="row">
+              <center>
+                <div class="col-xs-4 col-md-4 col-md-offset-1 col-xs-offset-1">
+                      <button type="radio" class="btn btn-default btn-square btn-unfocusable" name="environmentbtn" id="prodchk" ng-click="productionSelected=true">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="productionSelected"></span>
+                        <span class="glyphicon glyphicon-none" aria-hidden="true" ng-hide="productionSelected"></span>
+                      </button>
+                      <label for="prodchk"><small>Production</small></label>
+                </div>
+                <div class="col-xs-4 col-md-4 col-md-offset-1 col-xs-offset-1">
+                      <button type="radio" class="btn btn-default btn-square btn-unfocusable" name="environmentbtn" id="sandboxchk" ng-click="productionSelected=false">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-hide="productionSelected"></span>
+                        <span class="glyphicon glyphicon-none" aria-hidden="true" ng-show="productionSelected"></span>
+                      </button>
+                      <label for="sandboxchk"><small>Sandbox</small></label>
+                </div>
+              </center>
+            </div>
+          </div>
+        </div>
+
+        <div class="row add-separation">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <center>
+              <div class="btn btn-login" ng-click="login();" ng-show="!loggedUser" ng-disabled="loading">
+                <i class="fa fa-cog fa-spin" ng-show="loading"></i>
+                {{loginBtnText}}
+              </div>
+            </div>
+          </center>
+        </div>
+
+      </div>
+      <!-- /Panel Content (Unauthorized) -->
+
+      <!-- Panel Content (Authorized) -->
+      <div class="panel-body" ng-show="loggedUser">
+        <div>
+          <h4>
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+            Gmail to Salesforce Configuration
+          </h4>
+        </div>
+
+        <div class="row" ng-show="loading">
+          <div class="col-xs-4 col-md-4 col-md-offset-1 col-xs-offset-1">
+            <i class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+          </div>
+          <div class="col-xs-5 col-md-5 label-image" height="128">
+              <h5>Loading...<br>
+          </div>
+        </div>
+        <div class="row" ng-show="!loading">
+          <div class="col-xs-4 col-md-4 col-md-offset-1 col-xs-offset-1">
+            <img ng-src="{{loggedUser.photos.picture}}" class="img-rounded" height="128" width="128">
+          </div>
+          <div class="col-xs-5 col-md-5 label-image" height="128">
+              <h5>{{loggedUser.display_name}}<br>
+              <small>{{loggedUser.username}}</small></h5><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+            <h4>
+              <br/>Salesforce Objects<br/>
+              <span class="slds-icon_container slds-icon-standard-case" title="description of icon when needed">
+                  <svg aria-hidden="true" class="slds-icon slds-icon--small">
+                    <use xlink:href="bower_components/salesforce-lightning-design-system/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                  </svg>
+              </span>
+              <label><small>Cases</small></label><br/>
+
+              <span class="slds-icon_container slds-icon-standard-opportunity" title="description of icon when needed">
+                  <svg aria-hidden="true" class="slds-icon slds-icon--small">
+                    <use xlink:href="bower_components/salesforce-lightning-design-system/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
+                  </svg>
+              </span>
+              <label><small>Opportunities</small></label><br/>
+
+              <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
+                  <svg aria-hidden="true" class="slds-icon slds-icon--small">
+                    <use xlink:href="bower_components/salesforce-lightning-design-system/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                  </svg>
+              </span>
+              <label><small>Contacts</small></label><br/>
+
+              <span class="slds-icon_container slds-icon-standard-lead" title="description of icon when needed">
+                  <svg aria-hidden="true" class="slds-icon slds-icon--small">
+                    <use xlink:href="bower_components/salesforce-lightning-design-system/assets/icons/standard-sprite/svg/symbols.svg#lead"></use>
+                  </svg>
+              </span>
+              <label><small>Leads</small></label><br/>
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <center>
+              <div class="btn btn-logout" ng-click="logout();" ng-disabled="loading">
+                Disconnect from Salesforce
+              </div>
+            </div>
+          </center>
+        </div>
+
+      </div>
+      <!-- /Panel Content -->
+
+      <!-- Panel Footer -->
+      <div class="panel-footer panel-footer-login">
+        <div class="row">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <center>
+              <img src="img/mcplusa.png" height=40></img>
+            </center>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-8 col-md-8 col-md-offset-2 col-xs-offset-2">
+            <center>
+              <small>
+                <div class="col-xs-3 col-md-3"><a href="http://mcplusa.com">License</a></div>
+                <div class="col-xs-1 col-md-1">|</div>
+                <div class="col-xs-3 col-md-3"><a href="http://mcplusa.com">Support</a></div>
+              </small>
+            </center>
+          </div>
+        </div>
+
+      </div>
+      <!-- /Panel Footer -->
+
+    </div>
+  </body>
+
+  <!-- build:[src] js/third-party/ -->
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script type="text/javascript" src="bower_components/forceng/index.js"></script>
+  <!-- /build -->
+  <!-- build:js js/options.min.js -->
+  <script type="text/javascript" src="js/options.js"></script>
+  <!-- /build -->
+</html>
