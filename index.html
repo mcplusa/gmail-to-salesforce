@@ -1,1 +1,119 @@
-Initial Page
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Gmail-to-salesforce by jpdiazvaz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Gmail To Salesforce</h1>
+      <h2 class="project-tagline">Chrome extension to integrate your Gmail and Salesforce accounts</h2>
+      <a href="https://github.com/jpdiazvaz/gmail-to-salesforce" class="btn">View on GitHub</a>
+      <a href="https://github.com/jpdiazvaz/gmail-to-salesforce/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jpdiazvaz/gmail-to-salesforce/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="gmail-to-salesforce---attach-your-email-to-salesforce-in-a-couple-of-clicks" class="anchor" href="#gmail-to-salesforce---attach-your-email-to-salesforce-in-a-couple-of-clicks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gmail to Salesforce - Attach your email to Salesforce in a couple of clicks</h1>
+
+<p><img align="right" height="164" src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/icon128.png"></p>
+
+<hr>
+
+<p><a href="https://chrome.google.com/webstore/search/Gmail%20To%20Salesforce?_category=extensions">Extension for Google Chrome</a> that integrates your Gmail inbox with <a href="https://www.salesforce.com/">Salesforce</a>.</p>
+
+<p>This extension adds a button to your Gmail page that allows to easily attach your received and/or send emails to Salesforce Objects in a couple of clicks.</p>
+
+<p><strong>Check out our full documentation on <a href="http://mcplusa.github.io/gmail-to-salesforce">Our Github Page</a></strong></p>
+
+<p><strong>Do you like this project? Check out what other projects we have at <a href="http://mcplusa.com">MC+A</a></strong></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Using the Gmail To Salesforce extension is very easy. Just install it as any other Google Chrome extension, authorize it, and use it.</p>
+
+<h3>
+<a id="step-1-install-the-extension" class="anchor" href="#step-1-install-the-extension" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1. Install the Extension</h3>
+
+<p><a href="https://chrome.google.com/webstore/search/Gmail%20To%20Salesforce?_category=extensions">Install the extension</a> from the official Chrome Web Store.</p>
+
+<h3>
+<a id="step-2-authorize-salesforce" class="anchor" href="#step-2-authorize-salesforce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2. Authorize Salesforce</h3>
+
+<p>Go to chrome://extensions and search for <em>Gmail to Salesforce</em>. Click on Options and authorize either your Production or Sandbox account.
+</p>
+<center>
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-options-1.png" width="277" height="385" border="1" alt="Extension Options">
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-options-2.png" width="277" height="385" border="1" alt="Extension Options">
+</center>
+
+<h3>
+<a id="step-3-attach-your-email-to-salesforce" class="anchor" href="#step-3-attach-your-email-to-salesforce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3. Attach your email to Salesforce</h3>
+
+<p>Now when you go to your <a href="https://mail.google.com">Gmail</a>, you'll see a Blue Button on your email. Click it and you'll see all your available Salesforce Objects. Select the ones that you want to attach your email to, and follow the instructions.</p>
+
+<p></p>
+<center>
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-button-1.png" width="624" height="300" border="1" alt="Extension Options"><br>
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-popup-1.png" width="516" height="300" border="1" alt="Extension Options"><br>
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-popup-2.png" width="516" height="156" border="1" alt="Extension Options"><br>
+  <img src="https://s3.amazonaws.com/download.mcplusa.com/public+assets/gmail-to-salesforce/gmail-to-sfdc-popup-3.png" width="214" height="280" border="1" alt="Extension Options"><br>
+</center>
+
+
+<h2>
+<a id="build-from-source" class="anchor" href="#build-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build from Source</h2>
+
+<p>To build this project you'll need to install <a href="http://bower.io/">Bower</a> and <a href="http://gruntjs.com/">Grunt</a>:</p>
+
+<pre><code>$ npm install -g bower
+$ npm install -g grunt-cli
+</code></pre>
+
+<p>Once you finish setting up your environment, install the required dependencies</p>
+
+<pre><code>$ npm install
+$ bower install
+</code></pre>
+
+<p>And build the project (WIP)</p>
+
+<pre><code>$ grunt build
+</code></pre>
+
+<h2>
+<a id="running-from-source" class="anchor" href="#running-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running from Source</h2>
+
+<p>To run the extension on Google Chrome:</p>
+
+<pre><code>Go to chrome://extensions
+Clic on "Load unpacked extension..."
+Select the directory of the project
+</code></pre>
+
+<h2>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testing</h2>
+
+<p>Run Karma</p>
+
+<pre><code>$ karma start
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jpdiazvaz/gmail-to-salesforce">Gmail-to-salesforce</a> is maintained by <a href="https://github.com/jpdiazvaz">jpdiazvaz</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+
+  </body>
+</html>
