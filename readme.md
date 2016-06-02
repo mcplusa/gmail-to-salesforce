@@ -6,7 +6,7 @@
 
 ---
 
-[Extension for Google Chrome](https://chrome.google.com/webstore/search/Gmail%20To%20Salesforce?_category=extensions) that integrates your Gmail inbox with [Salesforce](https://www.salesforce.com/).
+[Extension for Google Chrome](https://chrome.google.com/webstore/detail/gmail-to-salesforce/pgfflbnbfafapphjalaagdbpndlkgglb) that integrates your Gmail inbox with [Salesforce](https://www.salesforce.com/).
 
 This extension adds a button to your Gmail page that allows to easily attach your received and/or send emails to Salesforce Objects in a couple of clicks.
 
@@ -20,7 +20,7 @@ Using the Gmail To Salesforce extension is very easy. Just install it as any oth
 
 ### Step 1. Install the Extension
 
-[Install the extension](https://chrome.google.com/webstore/search/Gmail%20To%20Salesforce?_category=extensions) from the official Chrome Web Store.
+[Install the extension](https://chrome.google.com/webstore/detail/gmail-to-salesforce/pgfflbnbfafapphjalaagdbpndlkgglb) from the official Chrome Web Store.
 
 ### Step 2. Authorize Salesforce
 
@@ -67,7 +67,7 @@ To run the extension on Google Chrome:
 
 ```
 Go to chrome://extensions
-Clic on "Load unpacked extension..."
+Click on "Load unpacked extension..."
 Select the directory of the project
 ```
 
